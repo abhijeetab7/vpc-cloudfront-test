@@ -4,10 +4,7 @@ resource "aws_lb" "istox_aws_lb" {
   load_balancer_type = "${local.lb_type}"
   security_groups    = ["${aws_security_group.allow_tls.id}"]
   enable_deletion_protection = false
-  subnets            = [
-    aws_subnet.istox_public.0.id,
-    aws_subnet.istox_public.1.id,
-  ]
+  subnets            = aws_subnet.istox_public.*.id
 }
 
 
